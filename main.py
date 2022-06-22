@@ -44,10 +44,10 @@ docentes = dfinal['Número de docentes'].value_counts().keys().tolist()
 
 docentes_slider = Slider(title="Número de profesores", value=80, start=min(docentes), end=max(docentes), step=10)
 estudiantes_slider = Slider(title="Número de estudiantes", value=80, start=estudiantes.min(), end=estudiantes.max(), step=10)
-provincias_select = Select(title="Provincias", options=sorted(provincias.keys()), value="")
-modalidades_select = Select(title="Modalidades", options=sorted(modalidades.keys()), value="")
-acceso_select = Select(title="Acceso", options=sorted(acceso.keys()), value="")
-sostenimiento_select = Select(title="Sostenimiento", options=sorted(sostenimiento.keys()), value="")
+provincias_select = Select(title="Provincias", options=sorted(provincias.keys()), value="AZUAY")
+modalidades_select = Select(title="Modalidades", options=sorted(modalidades.keys()), value="A Distancia")
+acceso_select = Select(title="Acceso", options=sorted(acceso.keys()), value="Aérea")
+sostenimiento_select = Select(title="Sostenimiento", options=sorted(sostenimiento.keys()), value="Fiscal")
 x_axis = Select(title="X Axis", options=sorted(axis_map.keys()), value="Número de profesores")
 y_axis = Select(title="Y Axis", options=sorted(axis_map.keys()), value="Número de estudiantes")
 
@@ -76,7 +76,6 @@ def select_escuelas():
     modalidades_val = modalidades_select.value
     acceso_val = acceso_select.value
     sostenimiento_val = sostenimiento_select.value
-    print (sostenimiento_val)
     selected = dfinal[
         (dfinal['Número de docentes'] >= docentes_slider.value) &
         (dfinal['Número de estudiantes'] >= estudiantes_slider.value) &
