@@ -178,7 +178,7 @@ def update():
     
 
     }
-
+# nuevo metodo
 for control in controls:
     if (control.name == 'graficos_select'):
       control.on_change('value', lambda attr, old, new: select_grafico())
