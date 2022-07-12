@@ -9,6 +9,8 @@ from bokeh.models import ColumnDataSource, Div, Select, Slider, TextInput
 from bokeh.io import curdoc
 from bokeh.plotting import figure
 from os.path import dirname, join
+from tkinter import *
+from tkinter import ttk
 
 from bokeh.transform import dodge
 from pip import main
