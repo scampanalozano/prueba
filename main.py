@@ -1,7 +1,3 @@
-
-from os import remove
-from pickle import TRUE
-from turtle import color
 import pandas as pd
 import numpy as np
 from bokeh.layouts import column, row
@@ -9,11 +5,6 @@ from bokeh.models import ColumnDataSource, Div, Select, Slider, TextInput
 from bokeh.io import curdoc
 from bokeh.plotting import figure
 from os.path import dirname, join
-
-
-from bokeh.transform import dodge
-from pip import main
-from pkg_resources import ContextualVersionConflict
 
 # Permite leer la data 
 data = pd.read_excel(join(dirname(__file__), "data/Listado.xls"),sheet_name=None)
