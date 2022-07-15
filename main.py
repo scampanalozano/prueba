@@ -18,8 +18,7 @@ dfinal = dfinal1.groupby(['Provincia', 'Número de docentes','Número de estudia
 'Sostenimiento', 'Modalidad','Régimen Escolar','Nombre de la Institución Educativa']).size().reset_index()
 
 
-
-#Realiza una contabilización de cada uno de los parametros.
+#Realiza una contabilización de cada uno de los parametros para los selects.
 provincias = dfinal1['Provincia'].value_counts()
 modalidades = dfinal1['Modalidad'].value_counts()
 acceso = dfinal1['Acceso (terrestre/ aéreo/fluvial)'].value_counts()
@@ -33,26 +32,27 @@ axis_map = {
  
 }
 
-#lista de la cantidad de numeros 
+#lista para la creacion de los sliders
 docentes = dfinal['Número de docentes'].value_counts().keys().tolist()
 es = dfinal['Número de estudiantes'].value_counts().keys().tolist()
+
+
+#Lista de valores de las regiones 
 regimen = dfinal['Régimen Escolar'].value_counts().keys().tolist()
-regimen_sierra = (dfinal['Régimen Escolar']== 'SIERRA').value_counts().sum()
+regimen_sierra = (dfinal['Régimen Escolar']== 'SIERRA').sum()
 regimen_costa = (dfinal['Régimen Escolar']== 'COSTA').sum()
 regimen_oriente = (dfinal['Régimen Escolar']== 'ORIENTE').sum()
 regimen_insular = (dfinal['Régimen Escolar']== 'INSULAR').sum()
 
-
+#arreglo de los valores 
 regiones = [regimen_costa, regimen_sierra,regimen_oriente,regimen_insular]
 
 
-
+#Son las opciones que se pondra en el select para el cabio de grafico
 opciones = {
     "Grafico de barras": "Grafico de barras",
     "Grafico de dispersion": "Grafico de dispersion",
 }
-
-
 
 #Parametros de cambio
 docentes_slider = Slider(title="Número de profesores", value=0, start=min(docentes), end=max(docentes), step=10,bar_color="blue", name='docentes_slider')
@@ -60,7 +60,7 @@ estudiantes_slider = Slider(title="Número de estudiantes", value=0, start=min(e
 provincias_select = Select(title="Provincias", options=sorted(provincias.keys()), value="AZUAY" , name ='provincias_select')
 modalidades_select = Select(title="Modalidades", options=sorted(modalidades.keys()), value="Presencial", name='modalidades_select')
 acceso_select = Select(title="Acceso", options=sorted(acceso.keys()), value="Terrestre", name='acceso_select')
-sostenimiento_select = Select(title="Sostenimiento", options=sorted(sostenimiento.keys()), value="Fiscal", name='sostenimiento_select')
+sostenimiento_select = Select(title="Sostenimiento", options=sorted(sostenimiento.keys()), value="Particular", name='sostenimiento_select')
 x_axis = Select(title="X Axis", options=sorted(axis_map.keys()), value="Número de profesores", name='x_axis')
 y_axis = Select(title="Y Axis", options=sorted(axis_map.keys()), value="Número de estudiantes",name = 'y_axis')
 graficos_select = Select(title="Opciones de gráficos", options=sorted(opciones.keys()), value="Grafico de dispersion", name='graficos_select')
